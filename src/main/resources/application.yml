@@ -1,0 +1,21 @@
+mybatis:
+  # mapper包的位置
+  type-aliases-package: com.lzcoke.paper.mapper
+  configuration:
+    # 开启驼峰命名
+    map-underscore-to-camel-case: true
+# 打印sql
+logging:
+  level:
+    com.lzcke.paper.mapper: debug
+spring:
+  profiles:
+    active: dev
+
+  redis:
+    host: 47.110.90.236
+    port: 6379
+  mvc:
+    static-path-pattern: /static/**
+server:
+  port: 8081
