@@ -1,6 +1,6 @@
 mybatis:
   # mapper包的位置
-  type-aliases-package: com.lzcoke.paper.mapper
+  type-aliases-package: com.lzcoke.paper.pojo
   configuration:
     # 开启驼峰命名
     map-underscore-to-camel-case: true

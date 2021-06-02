@@ -12,4 +12,7 @@ public interface LoginMapper {
 
     @Select("select * from admin_user where username = #{username} and password = #{password} and status = 0")
     AdminUser loginAdminUser(String username, String password);
+
+    @Select("select * from admin_user where admin_user_id = #{adminUserId}")
+    AdminUser adminUserInfo(int adminUserId);
 }

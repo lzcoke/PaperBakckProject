@@ -17,4 +17,11 @@ public class LoginService {
         AdminUser adminUser = LoginMapper.loginAdminUser(username, password);
         return adminUser;
     }
+
+    public AdminUser userinfo(int adminUserId) {
+        AdminUser adminUser = LoginMapper.adminUserInfo(adminUserId);
+        String[] split = adminUser.getRoles().split(",");
+        adminUser.setRolesList(split);
+        return adminUser;
+    }
 }

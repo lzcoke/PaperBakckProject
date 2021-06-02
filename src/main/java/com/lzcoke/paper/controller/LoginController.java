@@ -33,7 +33,7 @@ public class LoginController {
         if (login == null) {
             return ResultUtils.error("账号或者密码错误");
         } else {
-            redisUtils.set("admin_token_" + login.getAdminUserId(), login.getAdminUserId());
+            redisUtils.set("admin_token_" + login.getAdminUserId(), login);
             Map<String, Object> map = new HashMap<>();
             map.put("token", login.getAdminUserId());
             map.put("user", login);
