@@ -19,7 +19,7 @@ public class LoginHandleInterceptor implements HandlerInterceptor {
     @ApiModelProperty(hidden = false)
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 获取请求头
-        String token = request.getHeader("token");
+        String token = request.getHeader("X-Token");
         if (token == null) {
             // 未登录
             request.setAttribute("msg", "未登录账号，请登录");
@@ -35,6 +35,7 @@ public class LoginHandleInterceptor implements HandlerInterceptor {
                 request.getRequestDispatcher("/500").forward(request, response);
                 return false;
             } else {
+                redisUtils.expire("admin_token_" + token, 7200);
                 return true;
             }
         }

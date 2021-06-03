@@ -14,9 +14,13 @@ public class UserService {
 
     public List<User> userList(int page, int limit) {
         int startIndex = (page - 1) * limit;
-        int pageSize = limit;
-        List<User> users = userMapper.userList(startIndex, pageSize);
-        return users;
+        return userMapper.userList(startIndex, limit);
+    }
+
+    public int userBlocking(int userId){
+        int i = userMapper.userBlocking(userId);
+        return i;
+
     }
 
 }

@@ -14,8 +14,7 @@ public class LoginService {
     private LoginMapper LoginMapper;
 
     public AdminUser login(String username, String password) {
-        AdminUser adminUser = LoginMapper.loginAdminUser(username, password);
-        return adminUser;
+        return LoginMapper.loginAdminUser(username, password);
     }
 
     public AdminUser userinfo(int adminUserId) {

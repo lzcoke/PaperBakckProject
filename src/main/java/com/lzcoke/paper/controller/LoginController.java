@@ -34,6 +34,7 @@ public class LoginController {
             return ResultUtils.error("账号或者密码错误");
         } else {
             redisUtils.set("admin_token_" + login.getAdminUserId(), login);
+            redisUtils.expire("admin_token_"+login.getAdminUserId(),7200);
             Map<String, Object> map = new HashMap<>();
             map.put("token", login.getAdminUserId());
             map.put("user", login);

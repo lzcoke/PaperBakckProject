@@ -16,20 +16,20 @@ public class MyConfig implements WebMvcConfigurer {
     }
 
     private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
-            "/login",
-            "/500",
-            "/doc.html**",
+            "/backend/v1/login", "/500",
+            "/doc.html",
             "/webjars/**",
             "/webjar/**",
             "/swagger-resources",
             "/swagger-resources/**",
-            "/backend/**",
+            "/c**",
+            "/static/**"
     };
 
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        // addPathPatterns添加拦截路由
-//        // excludePathPatterns 不拦截路由设置
-//        registry.addInterceptor(loginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns(CLASSPATH_RESOURCE_LOCATIONS);
-//    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        // addPathPatterns添加拦截路由
+        // excludePathPatterns 不拦截路由设置
+        registry.addInterceptor(loginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns(CLASSPATH_RESOURCE_LOCATIONS);
+    }
 }
