@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -16,14 +17,14 @@ public class MyConfig implements WebMvcConfigurer {
     }
 
     private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
-            "/backend/v1/login", "/500",
-            "/doc.html",
-            "/webjars/**",
-            "/webjar/**",
-            "/swagger-resources",
-            "/swagger-resources/**",
-            "/c**",
-            "/static/**"
+            "/backend/v1/login",
+            "/500",
+            "/static/**",
+            "/static/swagger-resources/**",
+            "/static/swagger-resources**",
+            "/static/swagger-resources**",
+            "/swagger-resources**",
+            "/swagger-ui.html**"
     };
 
     @Override
@@ -31,5 +32,7 @@ public class MyConfig implements WebMvcConfigurer {
         // addPathPatterns添加拦截路由
         // excludePathPatterns 不拦截路由设置
         registry.addInterceptor(loginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns(CLASSPATH_RESOURCE_LOCATIONS);
+        WebMvcConfigurer.super.addInterceptors(registry);
     }
+
 }

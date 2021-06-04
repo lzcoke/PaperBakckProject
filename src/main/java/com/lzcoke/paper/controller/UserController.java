@@ -49,4 +49,16 @@ public class UserController {
             return ResultUtils.error("网络错误");
         }
     }
+
+    @PutMapping("/userBlock")
+    @ApiOperation("冻结用户")
+    public ResultUtils userCancelBlock(@RequestBody UserVo user) {
+        Map<String, Object> map = new HashMap<>();
+        int i = userService.userCancelBlocking(user.getUserId());
+        if (i > 0) {
+            return ResultUtils.success(map);
+        } else {
+            return ResultUtils.error("网络错误");
+        }
+    }
 }

@@ -13,4 +13,10 @@ public interface UserMapper {
 
     @Update("update user set block = 1 where user_id = #{userId}")
     int userBlocking(int userId);
+
+    @Update("update user set block = 0 where user_id = #{userId}")
+    int userCancelBlocking(int userId);
+
+    @Update("update user set password = #{password} where user_id = #{user_id}")
+    int userUpdatePassword(int userId, String password);
 }

@@ -19,20 +19,26 @@ public class SwaggerConfig {
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
+                //是否开启 (true 开启  false隐藏。生产环境建议隐藏)
+                //.enable(false)
                 .select()
+                //扫描的路径包,设置basePackage会将包下的所有被@Api标记类的所有方法作为api
                 .apis(RequestHandlerSelectors.basePackage("com.lzcoke.paper.controller"))
+                //指定路径处理PathSelectors.any()代表所有的路径
                 .paths(PathSelectors.any())
                 .build();
     }
 
-
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Spring Boot中使用Swagger2构建RESTful API")
-                .description("rest api 文档构建利器")
-                .termsOfServiceUrl("http://blog.csdn.net/itguangit")
-                .contact("itguang")
-                .version("1.0")
+                //设置文档标题(API名称)
+                .title("SpringBoot中使用Swagger2接口规范")
+                //文档描述
+                .description("接口说明")
+                //服务条款URL
+                .termsOfServiceUrl("http://localhost:8080/")
+                //版本号
+                .version("1.0.0")
                 .build();
     }
 }

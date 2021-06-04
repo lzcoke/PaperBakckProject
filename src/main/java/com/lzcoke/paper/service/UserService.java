@@ -17,10 +17,14 @@ public class UserService {
         return userMapper.userList(startIndex, limit);
     }
 
-    public int userBlocking(int userId){
+    public int userBlocking(int userId) {
         int i = userMapper.userBlocking(userId);
         return i;
+    }
 
+    public int userCancelBlocking(int userId) {
+        int i = userMapper.userCancelBlocking(userId);
+        return i;
     }
 
 }

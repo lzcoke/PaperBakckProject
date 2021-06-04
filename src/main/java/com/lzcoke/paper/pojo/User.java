@@ -15,6 +15,7 @@ public class User {
     private String prov;
     private String city;
     private int sex;
+    private int block;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
 }
