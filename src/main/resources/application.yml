@@ -15,7 +15,5 @@ spring:
   redis:
     host: 47.110.90.236
     port: 6379
-  mvc:
-    static-path-pattern: /static/**
 server:
   port: 8081

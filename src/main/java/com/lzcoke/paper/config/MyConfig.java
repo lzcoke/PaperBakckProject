@@ -3,12 +3,23 @@ package com.lzcoke.paper.config;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class MyConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOriginPatterns("*")
+                .allowCredentials(true)
+                .allowedMethods("GET", "POST", "DELETE", "PUT", "OPTIONS")
+                .maxAge(3600);
+        WebMvcConfigurer.super.addCorsMappings(registry);
+    }
 
     /*使得login监听器成为spring容器*/
     @Bean
@@ -24,7 +35,9 @@ public class MyConfig implements WebMvcConfigurer {
             "/static/swagger-resources**",
             "/static/swagger-resources**",
             "/swagger-resources**",
-            "/swagger-ui.html**"
+            "/swagger-ui.html**",
+            "/doc.html**",
+            "/webjars/**"
     };
 
     @Override
@@ -35,4 +48,14 @@ public class MyConfig implements WebMvcConfigurer {
         WebMvcConfigurer.super.addInterceptors(registry);
     }
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**").addResourceLocations(
+                "classpath:/static/",
+                "classpath:/public/",
+                "classpath:/resources/",
+                "classpath:/META-INF/resources/"
+        );
+        WebMvcConfigurer.super.addResourceHandlers(registry);
+    }
 }
