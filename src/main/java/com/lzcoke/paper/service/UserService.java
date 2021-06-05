@@ -27,4 +27,19 @@ public class UserService {
         return i;
     }
 
+    public int userPassword(int userId, String password) {
+        int i = userMapper.userUpdatePassword(userId, password);
+        return i;
+    }
+
+    public int createUser(User user) {
+        int i = userMapper.createUser(user);
+        return i;
+    }
+
+    public User getUser(User user) {
+        User user1 = userMapper.getUser(user);
+        return user1;
+    }
+
 }

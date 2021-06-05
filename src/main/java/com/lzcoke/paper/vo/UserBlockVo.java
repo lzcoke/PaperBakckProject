@@ -3,7 +3,6 @@ package com.lzcoke.paper.vo;
 import lombok.Data;
 
 @Data
-public class UserPassVo {
+public class UserBlockVo {
     private int userId;
-    private String password;
 }

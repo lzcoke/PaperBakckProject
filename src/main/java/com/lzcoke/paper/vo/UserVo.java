@@ -1,8 +1,12 @@
 package com.lzcoke.paper.vo;
 
-import lombok.Data;
-
-@Data
 public class UserVo {
     private int userId;
+    private String name;
+    private String email;
+    private String password;
+    private int sex;
+    private String school;
+    private String city;
+    private String prov;
 }

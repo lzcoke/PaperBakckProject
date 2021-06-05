@@ -9,6 +9,7 @@ import java.util.Date;
 public class User {
     private int userId;
     private String nickname;
+    private String password;
     private String avatar;
     private String email;
     private String school;

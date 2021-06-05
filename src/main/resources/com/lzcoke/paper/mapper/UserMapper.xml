@@ -9,4 +9,22 @@
         where status = 0
         order by user_id DESC limit #{startIndex}, #{pageSize}
     </select>
+    <insert id="createUser">
+        insert into user (nickname, email, password, status, block, sex, prov, city, school, create_date)
+        values (#{nickname}, #{email}, #{password}, 0, 0, #{sex}, #{prov}, #{city}, #{school}, now())
+    </insert>
+    <select id="getUser" resultType="User">
+        select *
+        from user
+        where status = 0
+        <if test="userId != null and userId > 0 ">
+            and user_id = #{userId}
+        </if>
+        <if test="email != null ">
+            and email = #{email}
+        </if>
+        <if test="nickname != null ">
+            and nickname = #{nickname}
+        </if>
+    </select>
 </mapper>
